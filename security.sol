@@ -26,20 +26,13 @@ using SafeMath for uint256;
 
     }
 
-    
-
     function Withdraw(uint256 amout ) external nonReentrant {
       require(amount>0, "valor invalido");
       require(balances[msg.sender ]>= amount, "saldo invalido man");
-
       
     balances[msg.sender] = balances[msg.sender.sub(amount)];
     payable(msg.sender).transfer(amount);
     emit Withdraw(msg.sender, amount);
-
-      
-
-
     }
 
 function enviaEther(address to, uint256 amount) external nonReentrant {
